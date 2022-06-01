@@ -1,0 +1,19 @@
+.container{
+  a{
+    color:aliceblue;
+    margin: 1rem;
+    text-decoration: none;
+    
+    &::after{
+      content: "";
+      margin-left: 10px;
+      position: absolute;
+      height: 20px;
+      width: 1px;
+      background-color: #fff;
+      cursor: auto;
+    }
+  }
+
+  
+}

@@ -1,0 +1,29 @@
+import style from './Header.module.scss';
+import logo from '../../assets/img/logo.png';
+import banner from '../../assets/img/headerImage.jpg';
+import { RostasMenu } from '../RotasMenu';
+
+export function Header(){
+  return(
+    <>
+    <header>
+      <div className={style.containerHeader}>
+        <div className={style.logo}>
+          <img 
+            src={logo} 
+            alt="logo" 
+          />
+        </div>
+        <div className={style.rotasMenu}>
+          <RostasMenu title={"HOME"} link={""}></RostasMenu>
+          <RostasMenu title={"POSTS"} link={""}></RostasMenu>
+          <RostasMenu title={"SISTEMA ACADÊMICO"} link={""}></RostasMenu>
+        </div>
+      </div>
+      <div className={style.banner}>
+        <img src={banner} alt="banner" />
+      </div>
+    </header>
+    </>
+  );
+}

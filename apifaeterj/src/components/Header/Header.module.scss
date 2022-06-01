@@ -1,0 +1,67 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: #F6F4F6;
+}
+//1 rem = 16px
+html{
+  @media(max-width: 1080px){
+    font-size: 93.75%; //equilave a 15px em relação a 16x
+  }
+
+  @media(max-width: 720px){
+    font-size: 87.5%; //14px
+  }
+
+  @media(max-width: 375px){
+    font-size: 75%; //12px
+  }
+}
+
+header{
+  // height: 16.3rem;
+
+  .containerHeader{
+    height: 6rem;
+    width: 100%;
+    padding: 0 2rem;
+    display: flex;
+    font: 16px "Roboto";
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 3px 6px #00000029;
+    background-color: #051933;
+
+    .logo{
+      height: 2.75rem;
+      width: 15rem;
+      img{
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .rotasMenu{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // margin-left: 2rem;
+    }
+
+  }
+
+  .banner{
+    height: 14rem; //16.3
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    img{
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
