@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import style from './RotasMenu.module.scss';
 
 interface IMenu{
@@ -9,9 +10,9 @@ export function RostasMenu(rota: IMenu){
   return(
     <>
       <nav className={style.container}>
-        <a href="google.com">
+        <Link to={rota.link}>
           {rota.title}
-        </a>
+        </Link>
       </nav>
     </>
   );
