@@ -7,18 +7,15 @@ export function Login(){
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    api
-    .get("/")
-    .then((response) => setUser(response.data))
-    .catch((error) => {"Erro! "+error});
+    // api
+    // .get("/")
+    // .then((response) => setUser(response.data))
+    // .catch((error) => {"Erro! "+error});
   }, []);
-
-  //nao preciso ter a parte 'editar anotação' para fazer requisição. É só alterar direto na informação, ex: nome da matéria ou excluir um obj inteiro.
 
   return(
     <>
     <div className={style.container}>
-      {/* Academico */}
       <div className={style.content}>
         <span className={style.titulo}>Login</span>
         <div className={style.imagem}>
