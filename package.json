@@ -16,7 +16,6 @@
     "@types/react-dom": "^18.0.5",
     "axios": "^0.27.2",
     "font-awesome": "^4.7.0",
-    "gh-pages": "^4.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
@@ -25,7 +24,7 @@
     "typescript": "^4.7.2",
     "web-vitals": "^2.1.4"
   },
-  "resolutons":{
+  "resolutons": {
     "nth-check": "2.0.1"
   },
   "scripts": {

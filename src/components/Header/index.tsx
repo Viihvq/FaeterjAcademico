@@ -19,7 +19,7 @@ export function Header(){
         <div className={style.rotasMenu}>
           <RostasMenu title={"HOME"} link={"/"}></RostasMenu>
           <RostasMenu title={"POSTS"} link={"posts"}></RostasMenu>
-          <RostasMenu title={"SISTEMA ACADÊMICO"} link={"academico"}></RostasMenu>
+          <RostasMenu title={"LOGIN"} link={"academico"}></RostasMenu>
         </div>
       </div>
       <div className={style.banner}>
