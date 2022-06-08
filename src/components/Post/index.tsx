@@ -1,17 +1,20 @@
-import style from './Posts.module.scss';
+import style from './Post.module.scss';
 import teste from '../../assets/img/teste.png';
 
 interface IProps{
-  title?: string;
+  title: string;
+  category?: string;
   body?: string;
-  image: string;
+  image?: string;
 }
 
-export function Posts(props: IProps){
+export function Post(props: IProps){
   return(
     <>
       <div className={style.content}>
-        <h1 className={style.titulo}>{props.title}</h1>
+        <div className={style.titulo}>
+          <h1 >{props.title}</h1>  <span>{props.category}</span>
+        </div>
         <p className={style.corpo}> {props.body} </p>
         <img src={teste} alt="" />
       </div>

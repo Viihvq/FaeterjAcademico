@@ -5,6 +5,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import './styles/Global.module.scss';
 import { Login } from "./components/Login";
 import { Infos } from "./components/Infos";
+import { News } from "./components/News";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Header/>
         <Routes>
-          <Route path="posts" element={(<div style={{minHeight: "50vh"}}><h2>Página reservada para posts da faculdade.</h2></div>)}></Route>
+          <Route path="posts" element={<News/>}></Route>
           <Route path="/" element={<Home/>}></Route>
           <Route path="academico" element={<Login/>}></Route>
           <Route path="academico/infos" element={<Infos/>}></Route>
