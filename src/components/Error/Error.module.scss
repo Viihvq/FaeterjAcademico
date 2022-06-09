@@ -1,0 +1,22 @@
+.container{
+  height: 50vh;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .text{
+    text-align: left;
+    font-weight: lighter;
+    line-height: 1.5;
+  }
+
+  span{
+    font-size: 2rem;
+
+  }
+
+  img{
+    margin: 0 2.5rem 5rem 0;
+  }
+}

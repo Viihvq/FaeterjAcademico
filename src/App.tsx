@@ -6,6 +6,7 @@ import './styles/Global.module.scss';
 import { Login } from "./components/Login";
 import { Infos } from "./components/Infos";
 import { News } from "./components/News";
+import { Error } from "./components/Error";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home/>}></Route>
           <Route path="academico" element={<Login/>}></Route>
           <Route path="academico/infos" element={<Infos/>}></Route>
+          <Route path="*" element={<Error/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

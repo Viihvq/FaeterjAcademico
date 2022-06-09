@@ -1,6 +1,7 @@
 import style from './Footer.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faLinkedinIn,  } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export function Footer(){
   return(
@@ -8,6 +9,7 @@ export function Footer(){
       <div className={style.text}>
       {/* <span className={style.text}>Avenida Getúlio Vargas, 335 - Quitandinha </span> */}
       <span >©  2022 FAETERJ - Petrópolis | Todos os direitos são reservados</span>
+      <FontAwesomeIcon icon={faEnvelope} className={style.icon} size="lg"/>
 
       </div>
       <div>
