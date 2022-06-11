@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://',
+  baseURL: 'https://apirestfaerterj.herokuapp.com',
 });
 
 export default api;

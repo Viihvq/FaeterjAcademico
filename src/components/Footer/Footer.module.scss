@@ -11,11 +11,17 @@ footer{
   background-color: #051933;
 
   .text{
-    font: 1rem "Roboto";
-    flex-direction: column;
+    text-align: center;
+    font: 0.8rem "Roboto";
     color: aliceblue;
     letter-spacing: 0.05rem;
     line-height: 1.5;
+    
+  }
+
+  .icon{
+    color: aliceblue;
+    margin: 0 0.3rem 0 1rem;
   }
 
   div{
