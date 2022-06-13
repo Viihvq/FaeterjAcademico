@@ -1,22 +1,15 @@
 import style from './Post.module.scss';
-import teste from '../../assets/img/teste.png';
+import { INews } from '../../interfaces/INews';
 
-interface IProps{
-  title: string;
-  category?: string;
-  body?: string;
-  image?: string;
-}
-
-export function Post(props: IProps){
+export function Post(props: INews){
   return(
     <>
       <div className={style.content}>
         <div className={style.titulo}>
-          <h1 >{props.title}</h1>  <span>{props.category}</span>
+          <h1 >{props.titulo}</h1>  <span>{props.categoria} ~ {props.data}</span>
         </div>
-        <p className={style.corpo}> {props.body} </p>
-        <img src={teste} alt="" />
+        <p className={style.corpo}> {props.conteudo} </p>
+        <img src={props.imgNoticias} alt="" />
       </div>
     </>
   )

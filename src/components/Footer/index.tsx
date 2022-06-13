@@ -7,7 +7,6 @@ export function Footer(){
   return(
     <footer>
       <div className={style.text}>
-      {/* <span className={style.text}>Avenida Getúlio Vargas, 335 - Quitandinha </span> */}
       <span >
         <FontAwesomeIcon icon={faEnvelope} className={style.icon} size="sm"/> contato@faeterj-petropolis.edu.br 
         <FontAwesomeIcon icon={faPhone} className={style.icon} size="sm"/> (24) 2235-1079

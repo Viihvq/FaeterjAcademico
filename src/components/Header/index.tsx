@@ -2,8 +2,6 @@ import style from './Header.module.scss';
 import logo from '../../assets/img/logo.png';
 import banner from '../../assets/img/headerImage.jpg';
 import { RostasMenu } from '../RotasMenu';
-import { Link } from 'react-router-dom';
-
 
 export function Header(){
   return(

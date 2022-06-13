@@ -1,22 +1,18 @@
 import { useEffect, useState } from "react";
+import { INews } from "../../interfaces/INews";
 import { Post } from "../Post";
 import api from "../services/httpCommon";
-
-interface INews{ //teste
-  id: number;
-  titulo: string;
-  categoria: string;
-  data: string;
-  imgNoticias: string;
-}
+import postService from "../services/postService";
 
 export function News(){
-  const [posts, setPosts] = useState<INews>();
+  const [posts, setPosts] = useState<INews[]>([]);
 
   async function getPosts(){
-    api
-    .get<INews>("/noticias")
-    .then((response) => setPosts(response.data))
+    postService.getNoticias()
+    .then((response) => {
+      console.log(response.status);
+      setPosts(response.data)
+    })
     .catch((error) => {
       console.error("Erro! "+error);
     });
@@ -24,29 +20,23 @@ export function News(){
   
   useEffect(() => {
     getPosts();
-    console.log(posts)
   }, []);
-  console.log(posts)
 
   return(
     <>
-      {/* {posts?.disciplinas.map((post) =>{
+      {posts.map((post) =>{
         return(
-          <Post title={post.disciplina} body={post.professor + post.peso + posts.periodo}/>
+          <div key={post.id}>
+          <Post titulo={post?.titulo} 
+            categoria={post.categoria} 
+            conteudo={post.conteudo}
+            imgNoticias={post.imgNoticias}
+            data={post.data}
+          />
+          </div>
         )
 
-      })} */}
-
-      <Post title="SECRETARIA INFORMA!" 
-      body="Atenção, alunos! 
-      O último dia para trancamento da matrícula é 15 de junho!
-      Para requerimentos na Secretaria Acadêmica devem ser feitos através deste formulário." 
-      category="Informativo"
-      image=""/>
-      
-      <Post title="SECRETARIA!" 
-      body="Atenção, alunos!" 
-      image=""/> 
+      })}
       
     </>
   );

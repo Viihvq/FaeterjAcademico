@@ -1,40 +1,36 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { IUser } from '../Login';
-import api from '../services/httpCommon';
+import { IUser } from '../../interfaces/IUser';
 import userService from '../services/userService';
 import style from './Infos.module.scss';
 
-export function Infos(){//receber aqui as infos do usuario
+export function Infos(){
   const [isDisabled, setIsDisabled] = useState(true);
-  const [editTitle, setEditTitle] = useState<string>('');
-  const [editData, setEditData] = useState<string>('');
-  const [title, setTitle] = useState<string>('');
-  const [data, setData] = useState<string>('');
   const [user, setUser] = useState<IUser>();
+  const [data, setData] = useState<string>();
 
-  function getUser(id: number){
-    userService.getUserById(id)
-    .then((response) => setUser(response?.data))
-    .catch((error) => {
-      console.error("Erro! "+error);
-    });    
+  async function getUser(){
+    let local = localStorage.getItem("usuario");
+     if(local != null){
+       setUser(JSON.parse(local))
+     }  
   }
-  
-  useEffect(() => {
-    getUser(1);
-    console.log(user)
 
+  useEffect(() => {
+    setData(user?.nome)
+  },[user])
+
+
+  useEffect(() => {
+    getUser();
+    setData(user?.nome)
+    
   },[])
-
-   useEffect(() => {
-    setTitle(editTitle);
-  },[editTitle])
-
-  useEffect(() => {
-    setData(editData);
-  },[editData])
+  
+  function patchInfos(){
+    const userPut =  {...user, nome: data};
+    userService.putUser(userPut);
+    localStorage.setItem("usuario",JSON.stringify(userPut));
+  }
 
   function ableEdit(){
     setIsDisabled(false);
@@ -42,84 +38,47 @@ export function Infos(){//receber aqui as infos do usuario
   
   function saveInfos(){
     setIsDisabled(true);
-    //coloca patchinfos aqui
-  }
-
-
-  function patchInfos(){
-    api
-    .patch("/aluno", {
-      properties: {
-        disciplinas: "",
-        email: "",
-        nome: ""
-      }
-    })//.then()
+    patchInfos();
   }
 
   return(
     <>
     <div className={style.container}>
       <div className={style.infosUser}>
-        <div className={style.welcome}>
-          <span>Bem-vindo(a),</span> 
-          <input type="text" 
-            disabled={isDisabled} 
-            className={isDisabled ? style.desativado : style.ativado}
-            onChange={event => setEditTitle(event.target.value)}
-            value={user?.nome} 
-          />  
+        <div className={style.welcomeContent}>
+          <div className={style.welcome}>
+            <span>Olá,</span> 
+            
+              <input type="text" 
+                disabled={isDisabled} 
+                className={isDisabled ? style.desativado : style.ativado}
+                onChange={event => setData(event.target.value)}
+                value={data}
+              />  
         </div>
+            <button className={isDisabled ? style.botaoDesativado : style.botao } onClick={saveInfos}>Salvar</button>
+            <button className={isDisabled ? style.botao : style.botaoDesativado} onClick={ableEdit}>Editar</button> 
+        </div>
+       
         <div className={style.infoBotao}>
-          <span><b>Turno:</b> Noite?</span> 
+          <span><b>Matricula:</b> {user?.id} </span> 
           <span><b>E-mail:</b> {user?.email} </span>
-          <button className={style.botao} onClick={ableEdit}>Editar</button>
         </div>
       </div>
       <div className={style.cards}>
         {
-          user?.disciplinas.map((disciplina) => {
+          user?.disciplinas.map((disciplina, index) => {
             return(
-              <div className={style.card}>
+              <div className={style.card} key={index}>
                 <span className={style.titulo}>{disciplina?.disciplinas}</span>
                 <span className={style.data}> {disciplina?.periodo} período</span>
                 <span className={style.data}>Professor {disciplina?.professor}</span>
                 <span className={style.data}>Peso {disciplina.peso}</span>
                 <span className={style.data}>Turno {disciplina.turno}</span>
-                {/* <span >ANOTAÇÕES</span>
-                <div className={style.anotacoes}>
-                  <span>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</span>
-                </div> */}
-                {/* <button>Editar anotações</button> */}
               </div>
-
             )
           })
         }
-
-        {/* <div className={style.card}>
-          <input 
-            type="text" 
-            disabled={isDisabled} 
-            className={isDisabled ? style.desativado : style.ativado}
-            onChange={event => setEditTitle(event.target.value)}
-            value={"SISTEMAS OPERACIONAIS 2"}
-            // value={title}
-            />
-          <input 
-            type="text" 
-            disabled={isDisabled} 
-            className={isDisabled ? style.desativado : style.ativado}
-            onChange={event => setEditData(event.target.value)}
-            value={"13/06/2022"}
-            // value={data}
-            />
-          <span >ANOTAÇÕES</span>
-          <div className={style.anotacoes}>          
-          </div>
-          <button  className={style.botao}>Editar anotações</button>
-          <button  className={style.botao}>Salvar alterações</button>
-        </div> */}
       </div> 
     </div>
     </>
